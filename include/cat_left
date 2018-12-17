@@ -1,0 +1,22 @@
+<?php
+$obj = new PDO('mysql:host=http://localhost:8080; dbname=bansach' , 'root' , '');
+$obj->query('set names "utf8" ');
+$sql="select * from category";
+$data = $obj->query($sql);
+$cats = $data->fetchAll();
+//print_r($cats);exit;
+?>
+<div class="templatemo_content_left_section">
+	<h1>Categories</h1>
+    <ul>
+    <?php
+    foreach ($cats as $cat)
+    {
+     ?>
+        <li><a href="catbook.php?id=<?php echo $cat['cat_id']; ?>"><?php echo $cat['cat_name']; ?></a></li>
+       
+       <?php
+    }
+       ?>
+	</ul>
+</div>
